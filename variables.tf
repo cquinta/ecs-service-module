@@ -27,9 +27,9 @@ variable "service_launch_type" {
     weight            = number
   }))
   description = "EC2 or FARGATE or FARGATE_SPOT"
-  default     = [{
+  default = [{
     capacity_provider = "FARGATE_SPOT"
-    weight = 100
+    weight            = 100
   }]
 }
 variable "scale_type" {
@@ -98,6 +98,17 @@ variable "scale_tracking_requests" {
 }
 
 variable "container_image" {
-  type = string
+  type        = string
   description = "Container image to use for the service"
+}
+
+variable "efs_volumes" {
+  default = []
+  type = list(object({
+    volume_name    = string
+    file_system_id = string
+    file_system_root : string
+    mount_point : string
+    read_only = bool
+  }))
 }
