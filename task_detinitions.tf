@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "main" {
   task_role_arn      = var.service_task_execution_role
 
   dynamic "volume" {
-    for_each = var.efs.efs_volumes
+    for_each = var.efs_volumes
     content {
       name = volume.value.volume_name
       efs_volume_configuration {
