@@ -103,12 +103,13 @@ variable "container_image" {
 }
 
 variable "efs_volumes" {
-  default = []
   type = list(object({
-    volume_name    = string
-    file_system_id = string
+    volume_name : string
+    file_system_id : string
     file_system_root : string
     mount_point : string
-    read_only = bool
+    read_only : bool
   }))
+  description = "Volumes EFS existentes para serem montados nas tasks do ECS"
+  default     = []
 }

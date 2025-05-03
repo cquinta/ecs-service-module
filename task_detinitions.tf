@@ -51,7 +51,7 @@ resource "aws_ecs_task_definition" "main" {
       }
 
       mountPoints = [
-        for volume in var.efs.efs_volumes :
+        for volume in var.efs_volumes :
         {
           sourceVolume  = volume.volume_name
           containerPath = volume.mount_point
