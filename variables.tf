@@ -11,6 +11,15 @@ variable "service_task_execution_role" {}
 variable "environment_variables" {
   type = list(any)
 }
+
+variable "secrets" {
+  type = list(object({
+    name : string
+    valueFrom : string
+  }))
+  default = []
+}
+
 variable "capabilities" {
   type = list(any)
 }
